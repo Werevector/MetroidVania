@@ -57,7 +57,11 @@ NLTmxMap* NLLoadTmxMap( char *xml )
         layer->data = new int[ layer->width * layer->height ];
         
         char* copy = (char*) malloc( strlen( data ) + 1 );
-        strcpy( copy, data );
+        
+		//strcpy deprecated, using strcpy_s
+		strcpy( copy, data );
+
+		//strcpy_s(copy, sizeof(data), data);
         char* item = strtok( copy, separators );
 
         int index = 0;

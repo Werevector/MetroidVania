@@ -29,14 +29,14 @@ bool Game_World::InitWorld(){
 	mCamera.CameraX = mPlayer->ReturnPositon().x - mCamera.CameraW;
 	mCamera.CameraY = mPlayer->ReturnPositon().y - mCamera.CameraH;
 	
-	return mRenderer.LoadSpriteSheet("platformer.png");
+	return mRenderer.LoadSpriteSheet("Resources/platformer.png");
 }
 
 bool Game_World::LoadNewLevel(){
 
 	//LoadDummyRoom(&dummyRoom);
 
-	LoadRoomFromTmxFile("TestMap3.tmx", &currentLoadedRoom);
+	LoadRoomFromTmxFile("Resources/TestMap.tmx", &currentLoadedRoom);
 	//currentLoadedRoom = LoadRoomFromTmxFile("map1.tmx");
 
 

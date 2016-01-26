@@ -44,6 +44,11 @@ static std::string loadFile(const char * filename, bool appendNull){
 	ifstream fileStream;
 	fileStream.open(filename);
 
+	if (!fileStream.is_open()) {
+		cout << "Roomloader failed ! \nCould not find file " << filename << "\n";
+		return std::string("");
+	}
+
 	std::string XMLstring((std::istreambuf_iterator<char>(fileStream)), std::istreambuf_iterator<char>());
 
 	//resultString_c = XMLstring.c_str();
@@ -61,6 +66,8 @@ static bool LoadRoomFromTmxFile(std::string path, Game_Room* room){
 
 	//the pointer to the xml file
 	std::string xmlString = loadFile(path_c, true);
+
+	if (xmlString == "") return false;
 
 	char*  xml = new char[xmlString.length() + 1];
 	strcpy_s(xml, xmlString.length() + 1, xmlString.c_str());
